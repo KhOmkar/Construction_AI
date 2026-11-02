@@ -1,0 +1,87 @@
+# ==========================================
+# Construction Site AI - Git Ignore Policy
+# ==========================================
+
+# 1. Research Paper Files & LaTeX Compilation Artifacts
+paper.*
+references.bib
+test_author.*
+verify_paper.py
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# 2. Large Raw & Processed Datasets
+data/
+processed/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+*.npz
+*.npy
+
+# 3. Model Weights & Checkpoints (Heavy Binaries > 100MB)
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.h5
+*.onnx
+
+# 4. Training Runs, TensorBoard Dumps & Heavy Synthetic Outputs
+runs/*
+!runs/ae_baseline/
+runs/ae_baseline/*
+!runs/ae_baseline/anomaly_eval.json
+outputs/synthetic/
+
+# 5. Python Environment, Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints
+
+# 6. Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# 7. IDE, Editor & OS Artifacts
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo

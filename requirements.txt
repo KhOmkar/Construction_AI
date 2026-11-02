@@ -1,0 +1,32 @@
+# Construction Site AI: Dependencies for Local RTX 3050 (Tier B)
+# Python 3.12+ with CUDA 12.4
+
+# Core Deep Learning
+torch>=2.6.0
+torchvision>=0.21.0
+
+# Generative Architectures & Computer Vision
+diffusers>=0.30.0
+transformers>=4.45.0
+accelerate>=0.34.0
+imagehash>=4.3.0
+scipy>=1.14.0
+pillow>=10.4.0
+opencv-python>=4.10.0
+
+# Evaluation & Metrics
+torchmetrics>=1.4.0
+lpips>=0.1.4
+
+# Data & Config
+pyyaml>=6.0.2
+pandas>=2.2.0
+numpy>=1.26.0
+tqdm>=4.66.0
+matplotlib>=3.9.0
+
+# Interactive Dashboard & Notebooks
+streamlit>=1.38.0
+ipywidgets>=8.1.0
+jupyterlab>=4.2.0
+nbconvert>=7.16.0

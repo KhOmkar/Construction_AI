@@ -1,0 +1,49 @@
+# VQ-VAE + Autoregressive Transformer Configuration
+stage1_vqvae:
+  type: "vqvae"
+  name: "vqvae_tokenizer"
+  input_resolution: 64
+  in_channels: 3
+  codebook_size: 512
+  embedding_dim: 64
+  downsample_factor: 4 # 64x64 -> 16x16 = 256 tokens per image
+  commitment_beta: 0.25
+  epochs: 100
+  batch_size: 128
+  lr: 0.0005
+  mixed_precision: "fp16"
+
+stage2_transformer:
+  type: "transformer"
+  name: "gpt_image_tokens"
+  vocab_size: 516 # 512 visual tokens + 4 class tokens
+  seq_len: 257 # 1 class prefix token + 256 image tokens
+  n_layer: 6
+  n_head: 8
+  n_embd: 384
+  dropout: 0.10
+  epochs: 100
+  batch_size: 32
+  gradient_accumulation_steps: 4 # Effective batch size 128
+  lr: 0.0005
+  lr_scheduler: "cosine"
+  mixed_precision: "fp16"
+  temperature: 1.0
+  top_k: 50
+
+training:
+  seed: 42
+  num_workers: 0
+
+data:
+  train_npz: "processed/crops/crops_train_64.npz"
+  val_npz: "processed/crops/crops_val_64.npz"
+  test_npz: "processed/crops/crops_test_64.npz"
+  normalize_mode: "sigmoid" # [0, 1] range for VQ-VAE
+
+logging:
+  run_dir: "runs/vqvae_transformer_baseline"
+  vqvae_run_dir: "runs/vqvae_baseline"
+  transformer_run_dir: "runs/transformer_baseline"
+  save_every: 1
+  keep_last: 5

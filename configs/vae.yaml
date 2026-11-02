@@ -1,0 +1,34 @@
+# Variational Autoencoder (VAE / C-VAE) Configuration
+model:
+  type: "cvae"
+  name: "cvae_smooth_latent"
+  input_resolution: 64
+  in_channels: 3
+  latent_dim: 128
+  channels: [64, 128, 256, 512]
+  num_classes: 4
+  class_conditioned: true
+  beta: 1.0 # KL weight
+  kl_warmup_epochs: 10 # Linear beta schedule from 0 to beta
+
+training:
+  epochs: 100
+  batch_size: 128
+  lr: 0.001
+  weight_decay: 0.00001
+  lr_scheduler: "cosine"
+  mixed_precision: "fp16"
+  seed: 42
+  num_workers: 0
+
+data:
+  train_npz: "processed/crops/crops_train_64.npz"
+  val_npz: "processed/crops/crops_val_64.npz"
+  test_npz: "processed/crops/crops_test_64.npz"
+  normalize_mode: "sigmoid"
+
+logging:
+  run_dir: "runs/cvae_baseline"
+  save_every: 1
+  keep_last: 5
+  log_interval: 20

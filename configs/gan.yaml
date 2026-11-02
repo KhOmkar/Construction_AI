@@ -1,0 +1,35 @@
+# Conditional GAN with DiffAugment Configuration
+model:
+  type: "cgan"
+  name: "cgan_diffaugment"
+  input_resolution: 64
+  in_channels: 3
+  latent_dim: 128
+  num_classes: 4
+  gen_channels: 64
+  disc_channels: 64
+  spectral_norm: true
+  diffaugment: "color,translation,cutout"
+
+training:
+  epochs: 100
+  batch_size: 64
+  lr_g: 0.0002
+  lr_d: 0.0002
+  betas: [0.5, 0.999]
+  mixed_precision: "fp16"
+  seed: 42
+  num_workers: 0
+  fid_eval_every: 5 # Track FID every 5 epochs to select best checkpoint
+
+data:
+  train_npz: "processed/crops/crops_train_64.npz"
+  val_npz: "processed/crops/crops_val_64.npz"
+  test_npz: "processed/crops/crops_test_64.npz"
+  normalize_mode: "tanh" # [-1, 1] range for GAN
+
+logging:
+  run_dir: "runs/cgan_baseline"
+  save_every: 1
+  keep_last: 5
+  log_interval: 20

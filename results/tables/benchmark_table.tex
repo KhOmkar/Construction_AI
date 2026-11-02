@@ -1,0 +1,11 @@
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Model & Architecture & FID & KID & Inception_Score & CCA_Accuracy & Diversity_LPIPS & Novelty_NN_Dist & Novelty_Min_Dist & Eval_Seconds \\
+\midrule
+Autoencoder & AE & 7.720000 & 4.518500 & 1.090000 & 25.000000 & 2.049200 & 14.312900 & 14.002000 & 15.400000 \\
+Conditional VAE & CVAE & 4.620000 & 3.119500 & 1.480000 & 24.900000 & 14.833800 & 15.845700 & 12.220300 & 14.700000 \\
+Conditional GAN & CGAN & 4.650000 & 1.999700 & 1.420000 & 71.340000 & 4.860300 & 28.739800 & 26.873200 & 14.800000 \\
+DDPM Diffusion & DIFFUSION & 4.210000 & 2.384100 & 2.740000 & 51.510000 & 28.964100 & 25.214200 & 20.207300 & 465.100000 \\
+VQ-VAE + GPT & TRANSFORMER & 2.040000 & 2.497200 & 4.680000 & 50.780000 & 43.081300 & 24.844300 & 11.037300 & 445.000000 \\
+\bottomrule
+\end{tabular}

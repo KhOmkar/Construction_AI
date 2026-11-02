@@ -1,0 +1,93 @@
+# Dataset Configuration for Construction Site AI Data Preparation
+seed: 42
+
+unified_classes:
+  0: helmet
+  1: no_helmet
+  2: vest
+  3: no_vest
+  4: person
+
+crop_classes:
+  0: compliant        # wearing both helmet and vest
+  1: no_helmet        # missing helmet (with vest or alone)
+  2: no_vest          # missing vest (with helmet or alone)
+  3: both_missing     # missing both helmet and vest
+
+processing:
+  min_crop_size: 24          # Skip crops smaller than 24x24 px
+  crop_resolutions: [64, 128] # Generative resolutions
+  primary_resolution: 64     # Tier B target
+  hash_distance_threshold: 2 # Perceptual hash hamming distance for near-duplicates
+  split_ratios: [0.80, 0.10, 0.10] # train, val, test
+
+paths:
+  raw_dir: "data"
+  processed_dir: "processed"
+  scenes_dir: "processed/scenes"
+  final_test_dir: "processed/final_test"
+  crops_dir: "processed/crops"
+  manifest_path: "processed/manifest.csv"
+  reports_dir: "reports"
+  sample_grids_dir: "outputs/sample_grids"
+
+# Sources to include in processing
+sources:
+  ppe_2286y:
+    archive: "20250731-PPE2286y.zip"
+    format: "yolo"
+    class_map:
+      0: 0 # Helmet -> helmet
+      1: 1 # NoHelmet -> no_helmet
+      2: 3 # NoVest -> no_vest
+      3: 2 # Vest -> vest
+
+  archive_safety_vests:
+    archive: "archive.zip"
+    format: "voc_csv"
+    class_map:
+      "Safety Vest": 2    # vest
+      "NO-Safety Vest": 3 # no_vest
+
+  css_data:
+    archive: "css-data.zip"
+    format: "yolo"
+    class_map:
+      0: 0 # Hardhat -> helmet
+      2: 1 # NO-Hardhat -> no_helmet
+      4: 3 # NO-Safety Vest -> no_vest
+      5: 4 # Person -> person
+      7: 2 # Safety Vest -> vest
+      # 1 (Mask), 3 (NO-Mask), 6 (Cone), 8 (machinery), 9 (vehicle) are dropped
+
+  workplace_safety_coco:
+    archive: "PPE Dataset for Workplace Safety.v2i.coco-mmdetection.zip"
+    format: "coco"
+    class_map:
+      5: 0 # Helmet -> helmet
+      8: 2 # Vest -> vest
+      7: 4 # Person -> person
+      # 1 (Boots), 2 (Ear-protection), 3 (Glass), 4 (Glove), 6 (Mask) are dropped
+
+  ppe_6cls:
+    archive: "PPE.zip"
+    format: "yolo"
+    class_map:
+      1: 2 # Vest -> vest
+      3: 0 # helmet -> helmet
+      # 0 (Gloves), 2 (goggles), 4 (mask), 5 (safety_shoe) are dropped
+
+  jhboyo_ppe:
+    folder: "data/test" # Using complete test split (2751 images)
+    format: "yolo"
+    class_map:
+      0: 0 # helmet -> helmet
+      1: 1 # head -> no_helmet
+      2: 2 # vest -> vest
+
+  cvat_helmet:
+    archive: "archive (1).zip"
+    format: "cvat_xml"
+    class_map:
+      "helmet": 0
+      "no_helmet": 1

@@ -1,0 +1,16 @@
+{
+  "optimal_threshold": 0.0001929231220856309,
+  "val_auroc": 0.3719764326758813,
+  "val_auprc": 0.24521733523918376,
+  "val_best_f1": 0.47776365582998187,
+  "test_auroc": 0.34794161096553766,
+  "test_auprc": 0.23438332221880345,
+  "test_accuracy": 0.3094294770206022,
+  "test_fpr_at_95_tpr": 0.9873780837636259,
+  "test_f1_at_val_threshold": 0.4727602869468093,
+  "sample_counts": {
+    "test_total": 2524,
+    "test_compliant": 1743,
+    "test_violations": 781
+  }
+}

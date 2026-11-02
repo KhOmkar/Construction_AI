@@ -1,0 +1,21 @@
+# Lightweight dependencies for deploying the Streamlit Dashboard
+# Installs CPU PyTorch by default for fast, low-footprint cloud/container hosting
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2.0
+torchvision>=0.17.0
+
+# Dashboard & Visualization
+streamlit>=1.38.0
+pandas>=2.2.0
+numpy>=1.26.0
+pillow>=10.4.0
+matplotlib>=3.9.0
+pyyaml>=6.0.2
+
+# Generative & CV modules used by dashboard inference
+diffusers>=0.30.0
+transformers>=4.45.0
+accelerate>=0.34.0
+scipy>=1.14.0
+imagehash>=4.3.0

@@ -1,0 +1,11 @@
+# Cross-Model Generative Benchmark Leaderboard
+
+Evaluated on held-out real test crops ($N = 2,048$ samples per architecture):
+
+| Model           | Architecture   |   FID |    KID |   Inception_Score |   CCA_Accuracy |   Diversity_LPIPS |   Novelty_NN_Dist |   Novelty_Min_Dist |   Eval_Seconds |
+|:----------------|:---------------|------:|-------:|------------------:|---------------:|------------------:|------------------:|-------------------:|---------------:|
+| Autoencoder     | AE             |  7.72 | 4.5185 |              1.09 |          25    |            2.0492 |           14.3129 |            14.002  |           15.4 |
+| Conditional VAE | CVAE           |  4.62 | 3.1195 |              1.48 |          24.9  |           14.8338 |           15.8457 |            12.2203 |           14.7 |
+| Conditional GAN | CGAN           |  4.65 | 1.9997 |              1.42 |          71.34 |            4.8603 |           28.7398 |            26.8732 |           14.8 |
+| DDPM Diffusion  | DIFFUSION      |  4.21 | 2.3841 |              2.74 |          51.51 |           28.9641 |           25.2142 |            20.2073 |          465.1 |
+| VQ-VAE + GPT    | TRANSFORMER    |  2.04 | 2.4972 |              4.68 |          50.78 |           43.0813 |           24.8443 |            11.0373 |          445   |
